@@ -1,6 +1,9 @@
 #include "booleanFunction.h"
 #include "iostream"
 #include "vector"
+#include <algorithm>
+#include <bitset>
+using namespace std;
 
 
 booleanFunction::booleanFunction() {
@@ -33,6 +36,78 @@ booleanFunction::booleanFunction() {
 
 booleanFunction::~booleanFunction() {
 };
+
+
+
+//----------------------------- Here Starts Adam Code ----------------------------------
+
+
+
+// Function to check if a minterm is covered by a given prime implicant
+
+bool booleanFunction::isCoveredBy(int minterm, const string& pi) {
+    // Convert minterm to binary representation as a string
+    bitset<32> mintermBits(minterm); // assuming 32 bits, adjust as needed
+    string mintermStr = mintermBits.to_string();
+    mintermStr = mintermStr.substr(mintermStr.size() - pi.size());  // Truncate to match the length of pi
+
+    // Compare the minterm string and the prime implicant string
+    for (size_t i = 0; i < pi.size(); ++i) {
+        if (pi[i] == '-') {
+            continue; // Skip 'don't care' condition
+        }
+        if (pi[i] != mintermStr[i]) {
+            return false;  // Mismatch found
+        }
+    }
+
+    return true;  // No mismatch found
+}
+
+
+// Function to generate and return Essential Prime Implicants
+
+string booleanFunction::Generate_EPI(const vector<int>& minterms, const vector<string>& primeImplicants) {
+
+    vector<string> essentialPrimeImplicants;
+
+    // Loop through each minterm to find Essential Prime Implicants
+    for (size_t i = 0; i < minterms.size(); ++i) {
+        int count = 0;
+        string candidateEPI;
+
+        // Check if this minterm is covered by only one PI
+        for (size_t j = 0; j < primeImplicants.size(); ++j) {
+            if (isCoveredBy(minterms[i], primeImplicants[j])) {
+                count++;
+                candidateEPI = primeImplicants[j];
+            }
+        }
+
+        // If only one PI covers this minterm, it's essential
+        if (count == 1) {
+            if (find(essentialPrimeImplicants.begin(), essentialPrimeImplicants.end(), candidateEPI)
+                == essentialPrimeImplicants.end()) {
+                essentialPrimeImplicants.push_back(candidateEPI);
+            }
+        }
+    }
+
+    // Create a string representation of all essential prime implicants
+    string epiString = "";
+    for (size_t i = 0; i < essentialPrimeImplicants.size(); ++i) {
+        epiString += essentialPrimeImplicants[i] + " + ";
+    }
+    epiString = epiString.substr(0, epiString.length() - 3);  // Remove the last " + "
+
+    cout << "Essential Prime Implicants are: " << epiString << endl;
+
+    return epiString;
+}
+
+
+//----------------------------- Here Ends Adam Code ------------------------------------
+
 
 
 bool booleanFunction::Read_Validate_SoP() {

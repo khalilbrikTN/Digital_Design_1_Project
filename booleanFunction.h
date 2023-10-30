@@ -13,6 +13,14 @@ public:
     // Destructor to clean up resources
     ~booleanFunction();
 
+    //----------------------------- Here Starts Adam Code ----------------------------------
+
+    std::string Generate_EPI(const std::vector<int>& minterms, const std::vector<std::string>& primeImplicants);
+
+    bool isCoveredBy(int minterm, const std::string& pi);
+
+    //----------------------------- Here Ends Adam Code ------------------------------------
+
     // Read and validate a Boolean expression given as Sum of Products (SoP).
     // Returns true if the input is valid, false otherwise.
     bool Read_Validate_SoP();
