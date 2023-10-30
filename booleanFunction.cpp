@@ -100,9 +100,17 @@ std::string booleanFunction::Generate_K_MAP() {
 void booleanFunction::Generate_literals(){
 
     std::vector<char>::iterator iter = variables.begin();
-    for(iter; iter < variables.end()-1; iter++){
-        std::cout<<std::to_string(*iter)<<std::endl;
-        literals.push_back(std::to_string(*iter)); //push back x
-        literals.push_back(std::to_string(*iter) + "'"); //push back x'
+    std::string x, x_bar;
+
+
+    for(iter; iter < variables.end(); iter++){
+        x = *iter;
+        x_bar = x + "'";
+        std::cout<<x<<std::endl;
+        std::cout<<x_bar<<std::endl;
+
+
+        //literals.push_back(std::to_string(*iter)); //push back x
+        //literals.push_back(std::to_string(*iter) + "'"); //push back x'
     };
 }

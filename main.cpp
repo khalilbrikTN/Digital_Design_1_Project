@@ -7,7 +7,7 @@ using namespace std;
 int main() {
     booleanFunction* f = new booleanFunction();
     f->Read_Validate_SoP();
-    f->Read_Validate_PoS();
+    //f->Read_Validate_PoS();
 
     return 0;
 }
