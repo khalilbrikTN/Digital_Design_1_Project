@@ -30,7 +30,7 @@ public:
     bool Read_Validate_PoS();
 
     // Generate and return the truth table of the expression as a string.
-    std::string Generate_Truth_Table();
+    void Generate_Truth_Table();
 
     // Generate and return the canonical Sum of Products (SoP) representation as a string.
     std::string Generate_Canonical_SoP();
@@ -58,6 +58,11 @@ public:
 
     //This function will generate all possible literals and store them in the literals vector.
     void Generate_literals();
+    void generate_minterms(std::vector<std::string> literals, std::vector<std::string>& minterms, std::string current_minterm, int index);
+    void generate_maxterms(std::vector<std::string> literals, std::vector<std::string>& maxterms, std::string current_maxterm, int index);
+    bool evaluateMinterm(const std::string& minterm, const std::vector<bool>& values, const std::vector<char>& variables);
+
+
 
 
 private:
@@ -65,6 +70,8 @@ private:
     std::string f_PoS; // Holds the value of the validated Product of Sums (PoS) function.
     std::vector<char> variables; // Holds the names of the characters.
     std::vector<std::string> literals; //Holds all possible literals based on the entered variables.
+    std::vector<std::string> minterms; //Holds all possible minterms
+    std::vector<std::string> maxterms; //Holds all possible maxterms
 
 };
 

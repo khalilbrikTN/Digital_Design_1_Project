@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 "C:\Program Files\JetBrains\CLion 2022.3.3\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project" -B "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\cmake-build-debug"
-=======
-"C:\Program Files\JetBrains\CLion 2022.3.3\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project" -B "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project\cmake-build-debug"
 -- The C compiler identification is GNU 11.2.0
 -- The CXX compiler identification is GNU 11.2.0
 -- Detecting C compiler ABI info
@@ -14,7 +11,6 @@
 -- Check for working CXX compiler: C:/Program Files/JetBrains/CLion 2022.3.3/bin/mingw/bin/g++.exe - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
->>>>>>> a79abefc7fac2b1745604badbe32aea77b7f30e5
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/Adam/CLionProjects/Logic Minimization - DD1/Digital_Design_1_Project/cmake-build-debug
+-- Build files have been written to: C:/Users/Mohamed Khalil/Desktop/Courses/Digital/Digital_Project/Digital_Design_1_Project/cmake-build-debug

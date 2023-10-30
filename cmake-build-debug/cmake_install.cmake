@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Adam/CLionProjects/Logic Minimization - DD1/Digital_Design_1_Project
+# Install script for directory: C:/Users/Mohamed Khalil/Desktop/Courses/Digital/Digital_Project/Digital_Design_1_Project
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Adam/CLionProjects/Logic Minimization - DD1/Digital_Design_1_Project/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Mohamed Khalil/Desktop/Courses/Digital/Digital_Project/Digital_Design_1_Project/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
