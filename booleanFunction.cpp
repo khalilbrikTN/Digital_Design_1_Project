@@ -43,16 +43,16 @@ booleanFunction::~booleanFunction() {
 
 
 
-// Function to check if a minterm is covered by a given prime implicant
+// Function to check if a minterm is covered by a prime implicant
 
 bool booleanFunction::isCoveredBy(int minterm, const string& pi) {
     // Convert minterm to binary representation as a string
-    bitset<32> mintermBits(minterm); // assuming 32 bits, adjust as needed
+    bitset<32> mintermBits(minterm); // Convert the binary number to 32 bit
     string mintermStr = mintermBits.to_string();
-    mintermStr = mintermStr.substr(mintermStr.size() - pi.size());  // Truncate to match the length of pi
+    mintermStr = mintermStr.substr(mintermStr.size() - pi.size());  // To match the length of pi
 
     // Compare the minterm string and the prime implicant string
-    for (size_t i = 0; i < pi.size(); ++i) {
+    for (int i = 0; i < pi.size(); i++) {
         if (pi[i] == '-') {
             continue; // Skip 'don't care' condition
         }
@@ -65,46 +65,59 @@ bool booleanFunction::isCoveredBy(int minterm, const string& pi) {
 }
 
 
-// Function to generate and return Essential Prime Implicants
-
+// Function to generate and return Essential Prime Implicants as a Boolean Expression
 string booleanFunction::Generate_EPI(const vector<int>& minterms, const vector<string>& primeImplicants) {
 
     vector<string> essentialPrimeImplicants;
 
     // Loop through each minterm to find Essential Prime Implicants
-    for (size_t i = 0; i < minterms.size(); ++i) {
+    for (int i = 0; i < minterms.size(); i++) {
         int count = 0;
-        string candidateEPI;
+        string potentialEPI;
 
         // Check if this minterm is covered by only one PI
-        for (size_t j = 0; j < primeImplicants.size(); ++j) {
+        for (int j = 0; j < primeImplicants.size(); j++) {
             if (isCoveredBy(minterms[i], primeImplicants[j])) {
                 count++;
-                candidateEPI = primeImplicants[j];
+                potentialEPI = primeImplicants[j];
             }
         }
 
         // If only one PI covers this minterm, it's essential
         if (count == 1) {
-            if (find(essentialPrimeImplicants.begin(), essentialPrimeImplicants.end(), candidateEPI)
+            if (find(essentialPrimeImplicants.begin(), essentialPrimeImplicants.end(), potentialEPI)
                 == essentialPrimeImplicants.end()) {
-                essentialPrimeImplicants.push_back(candidateEPI);
+                essentialPrimeImplicants.push_back(potentialEPI);
             }
         }
     }
 
-    // Create a string representation of all essential prime implicants
-    string epiString = "";
-    for (size_t i = 0; i < essentialPrimeImplicants.size(); ++i) {
-        epiString += essentialPrimeImplicants[i] + " + ";
+    // Convert binary representation of EPIs to the Boolean expression using literals
+    string epiExpression = "";
+    for (int epiIndex = 0; epiIndex < essentialPrimeImplicants.size(); epiIndex++) {
+        string epi = essentialPrimeImplicants[epiIndex];
+        string term = "";
+        for (int i = 0; i < epi.size(); ++i) {
+            if (epi[i] == '1') {
+                term += string(1, variables[i]) + " . "; // Using dot for AND operation
+            } else if (epi[i] == '0') {
+                term += string(1, variables[i]) + "'" + " . "; // Using dot for AND operation and ' for negation
+            } // skip '-' since it's don't care condition
+        }
+
+        if (!term.empty()) {
+            term = term.substr(0, term.length() - 3); // Remove extra " . "
+            epiExpression += "(" + term + ") + "; // Put each product in parentheses and use "+" for OR operation
+        }
     }
-    epiString = epiString.substr(0, epiString.length() - 3);  // Remove the last " + "
 
-    cout << "Essential Prime Implicants are: " << epiString << endl;
+    if (!epiExpression.empty()) {
+        epiExpression = epiExpression.substr(0, epiExpression.length() - 3); // Remove extra " + "
+    }
 
-    return epiString;
+    cout << "Essential Prime Implicants are: " << epiExpression << endl;
+    return epiExpression;
 }
-
 
 //----------------------------- Here Ends Adam Code ------------------------------------
 
@@ -156,9 +169,6 @@ std::string booleanFunction::Generate_Canonical_PoS() {
 };
 
 std::string booleanFunction::Generate_PI() {
-};
-
-std::string booleanFunction::Generate_EPI() {
 };
 
 std::string booleanFunction::Generate_uncovered_minterms() {

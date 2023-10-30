@@ -2,7 +2,7 @@
 #define DIGITAL_DESIGN_1_PROJECT_BOOLEANFUNCTION_H
 
 #include <string>
-#include "vector"
+#include <vector>
 
 class booleanFunction {
 
@@ -40,9 +40,6 @@ public:
 
     // Generate and return the Prime Implicants as a string.
     std::string Generate_PI();
-
-    // Generate and return the Essential Prime Implicants as a string.
-    std::string Generate_EPI();
 
     // Print the minterms that are not covered by the essential PIs.
     std::string Generate_uncovered_minterms();

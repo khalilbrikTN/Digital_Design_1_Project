@@ -9,9 +9,14 @@ int main() {
     f->Read_Validate_SoP();
     f->Read_Validate_PoS();*/
 
-    std::vector<int> minterms = {1, 3, 4, 6, 7, 8, 9, 11};
+    /*std::vector<int> minterms = {1, 3, 4, 6, 7, 8, 9, 11};
     std::vector<std::string> primeImplicants = {"-0-", "--1", "1--", "-11"};
 
+    std::vector<int> minterms = {0, 2, 3, 8, 10, 16, 17, 18, 19, 21, 24, 26};
+    std::vector<std::string> primeImplicants = {"--0-0", "-001-", "100--", "10-01"};*/
+
+    std::vector<int> minterms = {10, 18, 26, 40, 41, 42, 48, 49, 50, 52, 53, 56, 57, 60, 61};
+    std::vector<std::string> primeImplicants = {"11--0-", "1-100-", "-01010", "-10010", "0-1010"};
 
     booleanFunction bf;
 
