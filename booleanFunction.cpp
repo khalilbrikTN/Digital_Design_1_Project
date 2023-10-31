@@ -119,6 +119,35 @@ string booleanFunction::Generate_EPI(const vector<int>& minterms, const vector<s
     return epiExpression;
 }
 
+// Function to print minterms not covered by Essential Prime Implicants
+void booleanFunction::Print_Uncovered_Minterms(const vector<int>& minterms, const vector<string>& primeImplicants) {
+    vector<int> uncoveredMinterms;
+
+    // Loop through each minterm to check if it's covered by any of the Essential Prime Implicants
+    for (int i = 0; i < minterms.size(); i++) {
+        bool isCovered = false;
+        for (int j = 0; j < primeImplicants.size(); j++) {
+            if (isCoveredBy(minterms[i], primeImplicants[j])) {
+                isCovered = true;
+                break; // Break out of the inner loop as minterm is already covered
+            }
+        }
+
+        // If minterm is not covered, add to the list of uncovered minterms
+        if (!isCovered) {
+            uncoveredMinterms.push_back(minterms[i]);
+        }
+    }
+
+    // Print the uncovered minterms using a traditional for loop
+    cout << "Minterms not covered by Essential Prime Implicants are: ";
+    for (int i = 0; i < uncoveredMinterms.size(); i++) {
+        cout << uncoveredMinterms[i] << " ";
+    }
+    cout << endl;
+}
+
+
 //----------------------------- Here Ends Adam Code ------------------------------------
 
 
