@@ -11,7 +11,7 @@ int main() {
     f->Generate_Truth_Table();
 
 
-
+    
 
 
 

@@ -19,6 +19,8 @@ public:
 
     bool isCoveredBy(int minterm, const std::string& pi);
 
+    void Print_Uncovered_Minterms(const std::vector<int>& minterms, const std::vector<std::string>& primeImplicants);
+
     //----------------------------- Here Ends Adam Code ------------------------------------
 
     // Read and validate a Boolean expression given as Sum of Products (SoP).
