@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+using namespace std;
 
 class booleanFunction {
 
@@ -21,6 +22,7 @@ public:
 
     void Print_Uncovered_Minterms(const std::vector<int>& minterms, const std::vector<std::string>& primeImplicants);
 
+    vector<string> GenerateAndPrintPIs(const std::vector<int>& minterms);
 
         //----------------------------- Here Ends Adam Code ------------------------------------
 

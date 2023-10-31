@@ -167,7 +167,11 @@ CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.obj: C:/Users/Adam/C
   C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unordered_map.h \
   C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/erase_if.h \
   C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/execution_defs.h \
-  C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bitset
+  C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bitset \
+  C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/set \
+  C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_tree.h \
+  C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_set.h \
+  C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_multiset.h
 
 CMakeFiles/Digital_Design_1_Project.dir/main.cpp.obj: C:/Users/Adam/CLionProjects/Logic\ Minimization\ -\ DD1/Digital_Design_1_Project/main.cpp \
   C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iostream \
@@ -646,5 +650,13 @@ C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32
 C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unordered_map.h:
 
 C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bitset:
+
+C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/set:
+
+C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_tree.h:
+
+C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_set.h:
+
+C:/Program\ Files/JetBrains/CLion\ 2022.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_multiset.h:
 
 C:/Users/Adam/CLionProjects/Logic\ Minimization\ -\ DD1/Digital_Design_1_Project/main.cpp:

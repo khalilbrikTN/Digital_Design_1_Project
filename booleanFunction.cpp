@@ -3,6 +3,7 @@
 #include "vector"
 #include <algorithm>
 #include <bitset>
+#include <set>
 using namespace std;
 
 
@@ -147,6 +148,74 @@ void booleanFunction::Print_Uncovered_Minterms(const vector<int>& minterms, cons
     cout << endl;
 }
 
+int countOnes(const string& s) {
+    return count(s.begin(), s.end(), '1');
+}
+
+vector<string> booleanFunction::GenerateAndPrintPIs(const vector<int>& minterms) {
+    struct Term {
+        string binary;
+        set<int> originalMinterms;
+    };
+
+    vector<Term> currentTerms;
+    for (int m : minterms) {
+        currentTerms.push_back({bitset<32>(m).to_string(), {m}});
+    }
+
+    set<string> primeImplicants;
+    while (true) {
+        vector<Term> nextTerms;
+        set<string> used;
+
+        for (size_t i = 0; i < currentTerms.size(); ++i) {
+            bool combined = false;
+            for (size_t j = 0; j < currentTerms.size(); ++j) {
+                if (i == j) continue;
+
+                int diffCount = 0;
+                int diffIndex = -1;
+
+                for (int k = 0; k < variables.size(); k++) {
+                    if (currentTerms[i].binary[32 - k - 1] != currentTerms[j].binary[32 - k - 1]) {
+                        diffCount++;
+                        diffIndex = k;
+                    }
+                }
+
+                if (diffCount == 1) {
+                    combined = true;
+                    used.insert(currentTerms[i].binary);
+                    used.insert(currentTerms[j].binary);
+                    string newBinary = currentTerms[i].binary;
+                    newBinary[32 - diffIndex - 1] = '-';
+                    set<int> combinedMinterms = currentTerms[i].originalMinterms;
+                    combinedMinterms.insert(currentTerms[j].originalMinterms.begin(), currentTerms[j].originalMinterms.end());
+                    nextTerms.push_back({newBinary, combinedMinterms});
+                }
+            }
+
+            if (!combined && used.find(currentTerms[i].binary) == used.end()) {
+                primeImplicants.insert(currentTerms[i].binary);
+            }
+        }
+
+        if (nextTerms.empty()) {
+            break;
+        }
+
+        currentTerms = nextTerms;
+    }
+
+    // Printing prime implicants
+    vector<string> resultImplicants;
+    for (const string& pi : primeImplicants) {
+        resultImplicants.push_back(pi.substr(32 - variables.size()));
+    }
+
+    return resultImplicants;
+
+}
 
 //----------------------------- Here Ends Adam Code ------------------------------------
 
