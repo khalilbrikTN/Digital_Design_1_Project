@@ -7,6 +7,7 @@
 #include <sstream>
 #include "fstream"
 #include "map"
+#include "set"
 
 using namespace std;
 
@@ -120,18 +121,17 @@ string booleanFunction::Generate_EPI(const vector<int>& minterms, const vector<s
 
 
 bool booleanFunction::Read_Validate_SoP() {
-
     std::string f;
     std::cout << "Enter SoP form!" << std::endl;
     std::cout << "f(";
 
-    std::vector<char>::iterator iter_variables = variables.begin();
-    for (iter_variables; iter_variables < variables.end() - 1; iter_variables++) {
+    for (auto iter_variables = variables.begin(); iter_variables < variables.end() - 1; ++iter_variables) {
         std::cout << *iter_variables << ", ";
-    };
-    std::cout << *iter_variables << ") = "; // This to avoid printing a comma at the end and add a ).
+    }
+    std::cout << variables.back() << ") = "; // This to avoid printing a comma at the end and add a ).
 
-    std::cin >> f; //Read the function from the user.
+    std::cin >> f; // Read the function from the user.
+
     if (f.empty()) {
         std::cout << "You entered an empty string! Try again!" << std::endl;
         return false;
@@ -144,67 +144,110 @@ bool booleanFunction::Read_Validate_SoP() {
         // Remove all spaces in the term for better matching.
         term.erase(std::remove_if(term.begin(), term.end(), ::isspace), term.end());
 
-        // Now you should check if each term is a valid minterm
-        if (std::find(minterms.begin(), minterms.end(), term) == minterms.end()) {
-            std::cout << "Invalid minterm detected: " << term << std::endl;
-            return false;
+        std::set<char> term_vars;  // To hold variables in the current term
+        for (size_t i = 0; i < term.size(); ++i) {
+            char c = term[i];
+            if (isalpha(c)) {
+                if (term_vars.find(c) != term_vars.end()) {
+                    std::cout << "Variable " << c << " is repeated in term: " << term << std::endl;
+                    return false;
+                }
+                term_vars.insert(c);
+
+                // Check if variable is available
+                if (std::find(variables.begin(), variables.end(), c) == variables.end()) {
+                    std::cout << "Invalid variable " << c << " detected in term: " << term << std::endl;
+                    return false;
+                }
+
+                // Check for negation
+                if (i + 1 < term.size() && term[i + 1] == '\'') {
+                    ++i; // Skip the next character
+                }
+            } else if (c != '\'') {
+                std::cout << "Invalid character " << c << " detected in term: " << term << std::endl;
+                return false;
+            }
         }
     }
     f_SoP = f;
 
-    cout<<"Function entered successfully!"<<endl;
+    std::cout << "Function entered successfully!" << std::endl;
     return true;
 }
 
-
 bool booleanFunction::Read_Validate_PoS() {
-
     std::string f;
     std::cout << "Enter PoS form!" << std::endl;
     std::cout << "f(";
 
-    std::vector<char>::iterator iter_variables = variables.begin();
-    for (iter_variables; iter_variables < variables.end() - 1; iter_variables++) {
+    for (auto iter_variables = variables.begin(); iter_variables < variables.end() - 1; ++iter_variables) {
         std::cout << *iter_variables << ", ";
-    };
-    std::cout << *iter_variables << ") = "; // This to avoid printing a comma at the end and add a ).
+    }
+    std::cout << variables.back() << ") = "; // This to avoid printing a comma at the end and add a ).
 
-    std::cin >> f; //Read the function from the user.
+    std::cin >> f; // Read the function from the user.
     if (f.empty()) {
         std::cout << "You entered an empty string! Try again!" << std::endl;
         return false;
     }
 
-    // Split the input string 'f' by the '.' delimiter.
+    // Split the input string 'f' by the '*' delimiter for maxterms.
     std::istringstream fStream(f);
     std::string term;
-    while (getline(fStream, term, '.')) {
+    while (getline(fStream, term, '*')) {
         // Remove all spaces in the term for better matching.
         term.erase(std::remove_if(term.begin(), term.end(), ::isspace), term.end());
 
-        // Validate the parentheses around the term
-        if (term.front() != '(' || term.back() != ')') {
-            std::cout << "Invalid maxterm detected (missing parentheses): " << term << std::endl;
-            return false;
-        }
+        std::set<char> term_vars; // To hold variables in the current term
+        for (size_t i = 0; i < term.size(); ++i) {
+            char c = term[i];
+            if (isalpha(c)) {
+                if (term_vars.find(c) != term_vars.end()) {
+                    std::cout << "Variable " << c << " is repeated in term: " << term << std::endl;
+                    return false;
+                }
+                term_vars.insert(c);
 
-        // Remove the parentheses for matching
-        term = term.substr(1, term.length() - 2);
+                // Check if variable is available
+                if (std::find(variables.begin(), variables.end(), c) == variables.end()) {
+                    std::cout << "Invalid variable " << c << " detected in term: " << term << std::endl;
+                    return false;
+                }
 
-        // Now you should check if each term is a valid maxterm
-        if (std::find(maxterms.begin(), maxterms.end(), term) == maxterms.end()) {
-            std::cout << "Invalid maxterm detected: " << term << std::endl;
-            return false;
+                // Check for negation
+                if (i + 1 < term.size() && term[i + 1] == '\'') {
+                    ++i; // Skip the next character
+                }
+            } else if (c != '\'' && c != '+') {
+                std::cout << "Invalid character " << c << " detected in term: " << term << std::endl;
+                return false;
+            }
         }
     }
+    f_PoS = f;
+
 
     std::cout << "Function entered successfully!" << std::endl;
     return true;
 }
 
 
-std::string booleanFunction::Generate_Canonical_SoP() {
-};
+string booleanFunction::canonical_SoP() {
+    std::string result = "";
+
+    for(int row = 0; row<minterms_bi.size(); row++){
+        for(int col = 0; col<minterms_bi.at(0).size()-1; col++){
+            if(minterms_bi.at(row).at(col) == 1){result = result + variables.at(col);}
+            else{result = result + variables.at(col) + "\'";}
+        }
+        result = result + "+";
+    }
+
+    cout<<result;
+    return result;
+}
+
 
 std::string booleanFunction::Generate_Canonical_PoS() {
 };
@@ -269,52 +312,39 @@ void booleanFunction::generate_maxterms(std::vector<std::string> literals, std::
 
 
 
-
 void booleanFunction::Generate_Truth_Table() {
-    // Number of variables
     int n = variables.size();
-
-    // Number of rows in the truth table
     int rows = pow(2, n);
-
-    // Map to hold variable values
     std::map<char, bool> var_values;
 
     std::cout << "Truth Table:\n";
-
-    // Print header
-    for (auto& var : variables) {
+    for (const auto& var : variables) {
         std::cout << var << " ";
     }
     std::cout << "| f\n";
 
-    // Loop through all possible variable assignments
     for (int i = 0; i < rows; ++i) {
-        // Initialize variable values based on row number
         for (int j = 0; j < n; ++j) {
             bool val = (i >> j) & 1;
             var_values[variables[n - j - 1]] = val;
         }
 
-        // Print variable assignments
-        for (auto& var : variables) {
+        for (const auto& var : variables) {
             std::cout << var_values[var] << " ";
         }
 
-        // Evaluate function
-        bool result = false; // Initialization
+        bool result = false;
         std::istringstream fStream(f_SoP);
         std::string term;
         while (getline(fStream, term, '+')) {
-            bool term_value = true; // Initialization
-            for (auto& var : term) {
+            bool term_value = true;
+            for (const auto& var : term) {
                 if (var == '\'') {
                     continue;
                 }
 
                 bool var_value = var_values[var];
-                if (*next(term.begin(), distance(term.begin(), find(term.begin(), term.end(), var))) == '\'')
-                {
+                if (*next(term.begin(), std::distance(term.begin(), std::find(term.begin(), term.end(), var))) == '\'') {
                     var_value = !var_value;
                 }
                 term_value &= var_value;
@@ -322,7 +352,8 @@ void booleanFunction::Generate_Truth_Table() {
             result |= term_value;
         }
 
-        // Print result
         std::cout << "| " << result << "\n";
     }
 }
+
+

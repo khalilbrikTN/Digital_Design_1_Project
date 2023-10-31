@@ -33,7 +33,7 @@ public:
     void Generate_Truth_Table();
 
     // Generate and return the canonical Sum of Products (SoP) representation as a string.
-    std::string Generate_Canonical_SoP();
+    std::string canonical_SoP();
 
     // Generate and return the canonical Product of Sums (PoS) representation as a string.
     std::string Generate_Canonical_PoS();
@@ -61,7 +61,7 @@ public:
     void generate_minterms(std::vector<std::string> literals, std::vector<std::string>& minterms, std::string current_minterm, int index);
     void generate_maxterms(std::vector<std::string> literals, std::vector<std::string>& maxterms, std::string current_maxterm, int index);
     bool evaluateMinterm(const std::string& minterm, const std::vector<bool>& values, const std::vector<char>& variables);
-
+    void nonCanonicalSoPToMinterms();
 
 
 
@@ -72,6 +72,10 @@ private:
     std::vector<std::string> literals; //Holds all possible literals based on the entered variables.
     std::vector<std::string> minterms; //Holds all possible minterms
     std::vector<std::string> maxterms; //Holds all possible maxterms
+
+    std::vector<std::vector<int>> minterms_bi; //ex: 0 0 0 1 for a b c f
+    std::vector<std::vector<int>> maxterms_bi; //ex: 0 1 0 0 for a b c f
+
 
 };
 
