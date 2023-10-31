@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/Adam/CLionProjects/Logic Minimization - DD1/Digital_Design_1_Project/booleanFunction.cpp" "CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.obj" "gcc" "CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.obj.d"
-  "C:/Users/Adam/CLionProjects/Logic Minimization - DD1/Digital_Design_1_Project/main.cpp" "CMakeFiles/Digital_Design_1_Project.dir/main.cpp.obj" "gcc" "CMakeFiles/Digital_Design_1_Project.dir/main.cpp.obj.d"
+  "C:/Users/Mohamed Khalil/Desktop/Courses/Digital/Digital_Project/Digital_Design_1_Project/booleanFunction.cpp" "CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.obj" "gcc" "CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.obj.d"
+  "C:/Users/Mohamed Khalil/Desktop/Courses/Digital/Digital_Project/Digital_Design_1_Project/main.cpp" "CMakeFiles/Digital_Design_1_Project.dir/main.cpp.obj" "gcc" "CMakeFiles/Digital_Design_1_Project.dir/main.cpp.obj.d"
   )
 
 # Targets to which this target links.

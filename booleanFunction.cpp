@@ -2,7 +2,12 @@
 #include "iostream"
 #include "vector"
 #include <algorithm>
+#include "cmath"
 #include <bitset>
+#include <sstream>
+#include "fstream"
+#include "map"
+#include "set"
 #include <set>
 using namespace std;
 
@@ -30,6 +35,10 @@ booleanFunction::booleanFunction() {
         else{
             std::cout<<"Thank you for entering the variable names!"<<std::endl;
             Generate_literals(); //Once variables are there we can generate literals.
+            cout<<"here"<<endl;
+            generate_minterms(literals, minterms, "",0); //generate all min_terms based on the literals
+            generate_maxterms(literals, maxterms, "",0); //generate all max_terms based on the literals
+
         }
     }
 
@@ -222,46 +231,133 @@ vector<string> booleanFunction::GenerateAndPrintPIs(const vector<int>& minterms)
 
 
 bool booleanFunction::Read_Validate_SoP() {
-
     std::string f;
-    std::cout<<"Enter SoP form!"<<std::endl;
-    std::cout<<"f(";
+    std::cout << "Enter SoP form!" << std::endl;
+    std::cout << "f(";
 
-    std::vector<char>::iterator iter_variables = variables.begin();
-    for(iter_variables; iter_variables < variables.end()-1; iter_variables++){
-        std::cout<<*iter_variables<<", ";
-    };
-    std::cout<<*iter_variables<<") = "; // This to avoid printing a comma at the end and add a ).
+    for (auto iter_variables = variables.begin(); iter_variables < variables.end() - 1; ++iter_variables) {
+        std::cout << *iter_variables << ", ";
+    }
+    std::cout << variables.back() << ") = "; // This to avoid printing a comma at the end and add a ).
 
+    std::cin >> f; // Read the function from the user.
 
-    std::cin>>f; //Read the function from the user.
-    if(f == ""){
-        std::cout<<"You entered an empty string! Try again! "<<std::endl;
-    }else{
-        std::vector<std::string>::iterator iter_literals = literals.begin();
-        for(iter_literals; iter_literals < literals.end()-1; iter_literals++){
-            std::cout<<*iter_literals<<", ";
-        }
+    if (f.empty()) {
+        std::cout << "You entered an empty string! Try again!" << std::endl;
+        return false;
     }
 
+    // Split the input string 'f' by the '+' delimiter.
+    std::istringstream fStream(f);
+    std::string term;
+    while (getline(fStream, term, '+')) {
+        // Remove all spaces in the term for better matching.
+        term.erase(std::remove_if(term.begin(), term.end(), ::isspace), term.end());
 
+        std::set<char> term_vars;  // To hold variables in the current term
+        for (size_t i = 0; i < term.size(); ++i) {
+            char c = term[i];
+            if (isalpha(c)) {
+                if (term_vars.find(c) != term_vars.end()) {
+                    std::cout << "Variable " << c << " is repeated in term: " << term << std::endl;
+                    return false;
+                }
+                term_vars.insert(c);
+
+                // Check if variable is available
+                if (std::find(variables.begin(), variables.end(), c) == variables.end()) {
+                    std::cout << "Invalid variable " << c << " detected in term: " << term << std::endl;
+                    return false;
+                }
+
+                // Check for negation
+                if (i + 1 < term.size() && term[i + 1] == '\'') {
+                    ++i; // Skip the next character
+                }
+            } else if (c != '\'') {
+                std::cout << "Invalid character " << c << " detected in term: " << term << std::endl;
+                return false;
+            }
+        }
+    }
+    f_SoP = f;
+
+    std::cout << "Function entered successfully!" << std::endl;
     return true;
-
-
-};
-
+}
 
 bool booleanFunction::Read_Validate_PoS() {
-    std::string minterm;
+    std::string f;
+    std::cout << "Enter PoS form!" << std::endl;
+    std::cout << "f(";
+
+    for (auto iter_variables = variables.begin(); iter_variables < variables.end() - 1; ++iter_variables) {
+        std::cout << *iter_variables << ", ";
+    }
+    std::cout << variables.back() << ") = "; // This to avoid printing a comma at the end and add a ).
+
+    std::cin >> f; // Read the function from the user.
+    if (f.empty()) {
+        std::cout << "You entered an empty string! Try again!" << std::endl;
+        return false;
+    }
+
+    // Split the input string 'f' by the '*' delimiter for maxterms.
+    std::istringstream fStream(f);
+    std::string term;
+    while (getline(fStream, term, '*')) {
+        // Remove all spaces in the term for better matching.
+        term.erase(std::remove_if(term.begin(), term.end(), ::isspace), term.end());
+
+        std::set<char> term_vars; // To hold variables in the current term
+        for (size_t i = 0; i < term.size(); ++i) {
+            char c = term[i];
+            if (isalpha(c)) {
+                if (term_vars.find(c) != term_vars.end()) {
+                    std::cout << "Variable " << c << " is repeated in term: " << term << std::endl;
+                    return false;
+                }
+                term_vars.insert(c);
+
+                // Check if variable is available
+                if (std::find(variables.begin(), variables.end(), c) == variables.end()) {
+                    std::cout << "Invalid variable " << c << " detected in term: " << term << std::endl;
+                    return false;
+                }
+
+                // Check for negation
+                if (i + 1 < term.size() && term[i + 1] == '\'') {
+                    ++i; // Skip the next character
+                }
+            } else if (c != '\'' && c != '+') {
+                std::cout << "Invalid character " << c << " detected in term: " << term << std::endl;
+                return false;
+            }
+        }
+    }
+    f_PoS = f;
 
 
-};
+    std::cout << "Function entered successfully!" << std::endl;
+    return true;
+}
 
-std::string booleanFunction::Generate_Truth_Table() {
-};
 
-std::string booleanFunction::Generate_Canonical_SoP() {
-};
+string booleanFunction::canonical_SoP() {
+    std::string result = "";
+
+    for(int row = 0; row<minterms_bi.size(); row++){
+        for(int col = 0; col<minterms_bi.at(0).size()-1; col++){
+            if(minterms_bi.at(row).at(col) == 1){result = result + variables.at(col);}
+            else{result = result + variables.at(col) + "\'";}
+        }
+        result = result + "+";
+    }
+
+    cout<<result;
+    return result;
+}
+
 
 std::string booleanFunction::Generate_Canonical_PoS() {
 };
@@ -283,9 +379,88 @@ std::string booleanFunction::Generate_K_MAP() {
 void booleanFunction::Generate_literals(){
 
     std::vector<char>::iterator iter = variables.begin();
-    for(iter; iter < variables.end()-1; iter++){
-        std::cout<<std::to_string(*iter)<<std::endl;
-        literals.push_back(std::to_string(*iter)); //push back x
-        literals.push_back(std::to_string(*iter) + "'"); //push back x'
+    std::string x, x_bar;
+
+
+    for(iter; iter < variables.end(); iter++){
+        x = *iter;
+        x_bar = x + "'";
+
+
+        literals.push_back(x); //push back x
+        literals.push_back(x_bar); //push back x'
     };
 }
+
+void booleanFunction::generate_minterms(std::vector<std::string> literals, std::vector<std::string>& minterms, std::string current_minterm, int index) {
+    // Base case: if the current index equals the size of the literals vector, we've generated a complete minterm
+    if (index == literals.size()) {
+        minterms.push_back(current_minterm);
+        return;
+    }
+
+    // Recursive case: append each literal and its complement to the current minterm
+    generate_minterms(literals, minterms, (current_minterm + literals.at(index)), index + 2);
+    generate_minterms(literals, minterms, (current_minterm + literals.at(index+1)), index + 2);
+}
+
+
+void booleanFunction::generate_maxterms(std::vector<std::string> literals, std::vector<std::string>& maxterms, std::string current_maxterm, int index) {
+    // Base case: if the current index equals the size of the literals vector, we've generated a complete maxterm
+    if (index == literals.size()) {
+        maxterms.push_back(current_maxterm);
+        return;
+    }
+
+    // Recursive case: append each literal and its complement to the current maxterm
+    generate_maxterms(literals, maxterms, current_maxterm.empty() ? literals.at(index) : current_maxterm + "+" + literals.at(index), index + 2);
+    generate_maxterms(literals, maxterms, current_maxterm.empty() ? literals.at(index+1) : current_maxterm + "+" + literals.at(index+1), index + 2);
+}
+
+
+
+void booleanFunction::Generate_Truth_Table() {
+    int n = variables.size();
+    int rows = pow(2, n);
+    std::map<char, bool> var_values;
+
+    std::cout << "Truth Table:\n";
+    for (const auto& var : variables) {
+        std::cout << var << " ";
+    }
+    std::cout << "| f\n";
+
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < n; ++j) {
+            bool val = (i >> j) & 1;
+            var_values[variables[n - j - 1]] = val;
+        }
+
+        for (const auto& var : variables) {
+            std::cout << var_values[var] << " ";
+        }
+
+        bool result = false;
+        std::istringstream fStream(f_SoP);
+        std::string term;
+        while (getline(fStream, term, '+')) {
+            bool term_value = true;
+            for (const auto& var : term) {
+                if (var == '\'') {
+                    continue;
+                }
+
+                bool var_value = var_values[var];
+                if (*next(term.begin(), std::distance(term.begin(), std::find(term.begin(), term.end(), var))) == '\'') {
+                    var_value = !var_value;
+                }
+                term_value &= var_value;
+            }
+            result |= term_value;
+        }
+
+        std::cout << "| " << result << "\n";
+    }
+}
+
+
