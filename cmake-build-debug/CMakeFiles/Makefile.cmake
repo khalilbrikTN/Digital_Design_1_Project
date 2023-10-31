@@ -108,7 +108,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/JetBrains/CLion 2022.3.3/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows.cmake"
   "C:/Program Files/JetBrains/CLion 2022.3.3/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/WindowsPaths.cmake"
   "C:/Program Files/JetBrains/CLion 2022.3.3/bin/cmake/win/x64/share/cmake-3.24/Modules/ProcessorCount.cmake"
-  "C:/Users/Mohamed Khalil/Desktop/Courses/Digital/Digital_Project/Digital_Design_1_Project/CMakeLists.txt"
+  "C:/Users/Adam/CLionProjects/Logic Minimization - DD1/Digital_Design_1_Project/CMakeLists.txt"
   "CMakeFiles/3.24.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.24.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.24.2/CMakeRCCompiler.cmake"

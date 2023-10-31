@@ -52,10 +52,10 @@ RM = "C:\Program Files\JetBrains\CLion 2022.3.3\bin\cmake\win\x64\bin\cmake.exe"
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project"
+CMAKE_SOURCE_DIR = "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Digital_Design_1_Project.dir/depend.make
@@ -69,32 +69,32 @@ include CMakeFiles/Digital_Design_1_Project.dir/progress.make
 include CMakeFiles/Digital_Design_1_Project.dir/flags.make
 
 CMakeFiles/Digital_Design_1_Project.dir/main.cpp.obj: CMakeFiles/Digital_Design_1_Project.dir/flags.make
-CMakeFiles/Digital_Design_1_Project.dir/main.cpp.obj: C:/Users/Mohamed\ Khalil/Desktop/Courses/Digital/Digital_Project/Digital_Design_1_Project/main.cpp
+CMakeFiles/Digital_Design_1_Project.dir/main.cpp.obj: C:/Users/Adam/CLionProjects/Logic\ Minimization\ -\ DD1/Digital_Design_1_Project/main.cpp
 CMakeFiles/Digital_Design_1_Project.dir/main.cpp.obj: CMakeFiles/Digital_Design_1_Project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Digital_Design_1_Project.dir/main.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Digital_Design_1_Project.dir/main.cpp.obj -MF CMakeFiles\Digital_Design_1_Project.dir\main.cpp.obj.d -o CMakeFiles\Digital_Design_1_Project.dir\main.cpp.obj -c "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Digital_Design_1_Project.dir/main.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Digital_Design_1_Project.dir/main.cpp.obj -MF CMakeFiles\Digital_Design_1_Project.dir\main.cpp.obj.d -o CMakeFiles\Digital_Design_1_Project.dir\main.cpp.obj -c "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project\main.cpp"
 
 CMakeFiles/Digital_Design_1_Project.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Digital_Design_1_Project.dir/main.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\main.cpp" > CMakeFiles\Digital_Design_1_Project.dir\main.cpp.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project\main.cpp" > CMakeFiles\Digital_Design_1_Project.dir\main.cpp.i
 
 CMakeFiles/Digital_Design_1_Project.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Digital_Design_1_Project.dir/main.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\main.cpp" -o CMakeFiles\Digital_Design_1_Project.dir\main.cpp.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project\main.cpp" -o CMakeFiles\Digital_Design_1_Project.dir\main.cpp.s
 
 CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.obj: CMakeFiles/Digital_Design_1_Project.dir/flags.make
-CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.obj: C:/Users/Mohamed\ Khalil/Desktop/Courses/Digital/Digital_Project/Digital_Design_1_Project/booleanFunction.cpp
+CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.obj: C:/Users/Adam/CLionProjects/Logic\ Minimization\ -\ DD1/Digital_Design_1_Project/booleanFunction.cpp
 CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.obj: CMakeFiles/Digital_Design_1_Project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.obj -MF CMakeFiles\Digital_Design_1_Project.dir\booleanFunction.cpp.obj.d -o CMakeFiles\Digital_Design_1_Project.dir\booleanFunction.cpp.obj -c "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\booleanFunction.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.obj -MF CMakeFiles\Digital_Design_1_Project.dir\booleanFunction.cpp.obj.d -o CMakeFiles\Digital_Design_1_Project.dir\booleanFunction.cpp.obj -c "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project\booleanFunction.cpp"
 
 CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\booleanFunction.cpp" > CMakeFiles\Digital_Design_1_Project.dir\booleanFunction.cpp.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project\booleanFunction.cpp" > CMakeFiles\Digital_Design_1_Project.dir\booleanFunction.cpp.i
 
 CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\booleanFunction.cpp" -o CMakeFiles\Digital_Design_1_Project.dir\booleanFunction.cpp.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project\booleanFunction.cpp" -o CMakeFiles\Digital_Design_1_Project.dir\booleanFunction.cpp.s
 
 # Object files for target Digital_Design_1_Project
 Digital_Design_1_Project_OBJECTS = \
@@ -110,7 +110,7 @@ Digital_Design_1_Project.exe: CMakeFiles/Digital_Design_1_Project.dir/build.make
 Digital_Design_1_Project.exe: CMakeFiles/Digital_Design_1_Project.dir/linklibs.rsp
 Digital_Design_1_Project.exe: CMakeFiles/Digital_Design_1_Project.dir/objects1.rsp
 Digital_Design_1_Project.exe: CMakeFiles/Digital_Design_1_Project.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Digital_Design_1_Project.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Digital_Design_1_Project.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Digital_Design_1_Project.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -122,6 +122,6 @@ CMakeFiles/Digital_Design_1_Project.dir/clean:
 .PHONY : CMakeFiles/Digital_Design_1_Project.dir/clean
 
 CMakeFiles/Digital_Design_1_Project.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project" "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project" "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\cmake-build-debug" "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\cmake-build-debug" "C:\Users\Mohamed Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\cmake-build-debug\CMakeFiles\Digital_Design_1_Project.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project" "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project" "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project\cmake-build-debug" "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project\cmake-build-debug" "C:\Users\Adam\CLionProjects\Logic Minimization - DD1\Digital_Design_1_Project\cmake-build-debug\CMakeFiles\Digital_Design_1_Project.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Digital_Design_1_Project.dir/depend
 

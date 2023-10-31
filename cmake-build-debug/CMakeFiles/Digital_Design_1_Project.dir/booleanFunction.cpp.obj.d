@@ -1,6 +1,6 @@
 CMakeFiles/Digital_Design_1_Project.dir/booleanFunction.cpp.obj: \
- C:\Users\Mohamed\ Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\booleanFunction.cpp \
- C:\Users\Mohamed\ Khalil\Desktop\Courses\Digital\Digital_Project\Digital_Design_1_Project\booleanFunction.h \
+ C:\Users\Adam\CLionProjects\Logic\ Minimization\ -\ DD1\Digital_Design_1_Project\booleanFunction.cpp \
+ C:\Users\Adam\CLionProjects\Logic\ Minimization\ -\ DD1\Digital_Design_1_Project\booleanFunction.h \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/string \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h \
