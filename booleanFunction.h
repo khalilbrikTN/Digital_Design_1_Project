@@ -2,7 +2,8 @@
 #define DIGITAL_DESIGN_1_PROJECT_BOOLEANFUNCTION_H
 
 #include <string>
-#include "vector"
+#include <vector>
+using namespace std;
 
 class booleanFunction {
 
@@ -19,7 +20,11 @@ public:
 
     bool isCoveredBy(int minterm, const std::string& pi);
 
-    //----------------------------- Here Ends Adam Code ------------------------------------
+    void Print_Uncovered_Minterms(const std::vector<int>& minterms, const std::vector<std::string>& primeImplicants);
+
+    vector<string> GenerateAndPrintPIs(const std::vector<int>& minterms);
+
+        //----------------------------- Here Ends Adam Code ------------------------------------
 
     // Read and validate a Boolean expression given as Sum of Products (SoP).
     // Returns true if the input is valid, false otherwise.
@@ -40,9 +45,6 @@ public:
 
     // Generate and return the Prime Implicants as a string.
     std::string Generate_PI();
-
-    // Generate and return the Essential Prime Implicants as a string.
-    std::string Generate_EPI();
 
     // Print the minterms that are not covered by the essential PIs.
     std::string Generate_uncovered_minterms();
