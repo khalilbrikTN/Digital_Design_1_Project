@@ -2,81 +2,94 @@
 #define DIGITAL_DESIGN_1_PROJECT_BOOLEANFUNCTION_H
 
 #include <string>
-#include "vector"
+#include <vector>
 
 class booleanFunction {
 
 public:
-    // Constructor to initialize the class
+    // Default constructor
     booleanFunction();
 
-    // Destructor to clean up resources
+    // Destructor
     ~booleanFunction();
 
     //----------------------------- Here Starts Adam Code ----------------------------------
 
+    // Generate Essential Prime Implicants based on the given minterms and prime implicants.
     std::string Generate_EPI(const std::vector<int>& minterms, const std::vector<std::string>& primeImplicants);
 
+    // Check if a minterm is covered by a given prime implicant.
     bool isCoveredBy(int minterm, const std::string& pi);
 
     //----------------------------- Here Ends Adam Code ------------------------------------
 
-    // Read and validate a Boolean expression given as Sum of Products (SoP).
-    // Returns true if the input is valid, false otherwise.
+    // Validates and reads a Sum of Products (SoP) expression.
     bool Read_Validate_SoP();
 
-    // Read and validate a Boolean expression given as Product of Sums (PoS).
-    // Returns true if the input is valid, false otherwise.
+    // Validates and reads a Product of Sums (PoS) expression.
     bool Read_Validate_PoS();
 
-    // Generate and return the truth table of the expression as a string.
+    // Generate and print the truth table for the given expression.
     void Generate_Truth_Table();
 
-    // Generate and return the canonical Sum of Products (SoP) representation as a string.
+    // Generate canonical Sum of Products (SoP) representation.
     std::string canonical_SoP();
 
-    // Generate and return the canonical Product of Sums (PoS) representation as a string.
+    // Generate canonical Product of Sums (PoS) representation.
     std::string Generate_Canonical_PoS();
 
-    // Generate and return the Prime Implicants as a string.
-    std::string Generate_PI();
+    // Generate Prime Implicants for the function.
+    std::vector<std::string> GenerateAndPrintPIs(std::vector<int>& minterms);
 
-    // Generate and return the Essential Prime Implicants as a string.
+    // Generate Essential Prime Implicants for the function.
     std::string Generate_EPI();
 
-    // Print the minterms that are not covered by the essential PIs.
-    std::string Generate_uncovered_minterms();
+    // Generate minterms not covered by essential prime implicants.
+    std::string Print_Uncovered_Minterms();
 
-    // Generate and return the minimized Boolean expression of the Boolean function as a string.
+    // Generate minimized expression.
     std::string Generate_minimized_expression();
 
-    // Draw the Karnaugh Map (K-Map) showing the solution as a string.
+    // Generate Karnaugh Map (K-Map).
     std::string Generate_K_MAP();
 
+    void Print_Uncovered_Minterms(std::vector<int>& minterms,std::vector<std::string>& primeImplicants);
 
-    //The following functions are helper functions for the previous main functions.
-
-    //This function will generate all possible literals and store them in the literals vector.
+    // Helper functions for generating literals, minterms, and maxterms.
     void Generate_literals();
     void generate_minterms(std::vector<std::string> literals, std::vector<std::string>& minterms, std::string current_minterm, int index);
     void generate_maxterms(std::vector<std::string> literals, std::vector<std::string>& maxterms, std::string current_maxterm, int index);
-    bool evaluateMinterm(const std::string& minterm, const std::vector<bool>& values, const std::vector<char>& variables);
-    void nonCanonicalSoPToMinterms();
+
+
+    WaveDromSOPVec parse_sop(const string& sop);
+    string output_final_html_from_sop(string sop);
 
 
 
 private:
-    std::string f_SoP; // Holds the value of the validated Sum of Products (SoP) function.
-    std::string f_PoS; // Holds the value of the validated Product of Sums (PoS) function.
-    std::vector<char> variables; // Holds the names of the characters.
-    std::vector<std::string> literals; //Holds all possible literals based on the entered variables.
-    std::vector<std::string> minterms; //Holds all possible minterms
-    std::vector<std::string> maxterms; //Holds all possible maxterms
+    // Holds the validated Sum of Products (SoP) function.
+    std::string f_SoP;
 
-    std::vector<std::vector<int>> minterms_bi; //ex: 0 0 0 1 for a b c f
-    std::vector<std::vector<int>> maxterms_bi; //ex: 0 1 0 0 for a b c f
+    // Holds the validated Product of Sums (PoS) function.
+    std::string f_PoS;
 
+    // Holds the names of the variables.
+    std::vector<char> variables;
 
+    // Holds all possible literals based on the entered variables.
+    std::vector<std::string> literals;
+
+    // Holds all possible minterms.
+    std::vector<std::string> minterms;
+
+    // Holds all possible maxterms.
+    std::vector<std::string> maxterms;
+
+    // Holds binary representation of minterms.
+    std::vector<std::vector<int>> minterms_bi;
+
+    // Holds binary representation of maxterms.
+    std::vector<std::vector<int>> maxterms_bi;
 };
 
 #endif //DIGITAL_DESIGN_1_PROJECT_BOOLEANFUNCTION_H

@@ -32,6 +32,9 @@ int main() {
 
         }
         f->Generate_Truth_Table();
+        f->Generate_Canonical_PoS();
+
+
     }
 
 
