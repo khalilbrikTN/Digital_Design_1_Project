@@ -18,6 +18,7 @@ int main() {
     vector<int> minterms = {1, 2, 4, 8, 10, 15};
     vector<string> primeImplicants = {"10--", "--01"};
 
+
     booleanFunction bf;
 
     string result = bf.Generate_EPI(minterms, primeImplicants);
