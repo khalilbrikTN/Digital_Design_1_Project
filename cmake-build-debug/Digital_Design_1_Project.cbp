@@ -84,6 +84,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Mohamed Khalil/Desktop/Courses/Digital/Digital_Project/Digital_Design_1_Project/Typedefs.h">
+			<Option target="Digital_Design_1_Project"/>
+		</Unit>
 		<Unit filename="C:/Users/Mohamed Khalil/Desktop/Courses/Digital/Digital_Project/Digital_Design_1_Project/booleanFunction.cpp">
 			<Option target="Digital_Design_1_Project"/>
 		</Unit>
