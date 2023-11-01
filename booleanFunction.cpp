@@ -368,13 +368,20 @@ bool booleanFunction::evaluate_sop(const std::string& sop, const std::map<char, 
         bool term_result = true;
         for (const char& var : term) {
             if (var == '\'') continue; // skip negation
-            term_result &= var_values.at(tolower(var));
+            bool value = false; // Default value
+            auto it = var_values.find(tolower(var));
+            if (it != var_values.end()) {
+                value = it->second;
+            }
+            term_result &= value;
             if (isupper(var)) term_result = !term_result;
         }
         if (term_result) return true;
     }
     return false;
 }
+
+
 void booleanFunction::generate_truth_table() {
     string sop = canonical_sop();
     int num_vars = variables.size();
@@ -773,4 +780,57 @@ void booleanFunction::generateKmap(const std::vector<std::string>& minterms, con
 }
 
 
+
+/*string output_final_html_from_sop(string sop) {
+
+    WaveDromSOPVec sop_vector;
+
+    string html_header = R"""(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WaveDrom Minimized Circuit Display</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.1.0/skins/default.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.1.0/wavedrom.min.js" type="text/javascript"></script>
+
+</head>
+<body onload="WaveDrom.ProcessAll()">
+
+<script type="WaveDrom">
+{ assign: [
+  ["out",
+    ["|",
+    )""";
+
+    string html_footer = R"""(
+    ]
+  ]
+]}
+</script>
+
+</body>
+</html>
+    )""";
+
+    string html_wavedrom_sop = html_header;
+    sop_vector = parse_sop(sop);
+
+    for (int i = 0; i < sop_vector.size(); i++) {
+        WaveDromProduct current_product = sop_vector[i];
+        html_wavedrom_sop += "[\"&\", ";
+        for (int j = 0; j < current_product.size(); j++) {
+            WaveDromVariable current_variable = current_product[j];
+            if (current_variable.negative) {
+                html_wavedrom_sop += "[\"~\", \"" + string(1, current_variable.character) + "\"], ";
+            } else {
+                html_wavedrom_sop += "\"" + string(1, current_variable.character) + "\", ";
+            }
+        }
+        html_wavedrom_sop += "],\n";
+    }
+
+    html_wavedrom_sop += html_footer;
+    return html_wavedrom_sop;
+}*/
 

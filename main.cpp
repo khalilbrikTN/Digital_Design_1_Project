@@ -11,6 +11,7 @@ booleanFunction* f = new booleanFunction();
 f->Read_Validate_PoS();
 f->Read_Validate_SoP();
 f->generate_truth_table();
+
 /*
 cout<<f->canonical_sop();
 cout<<endl;
